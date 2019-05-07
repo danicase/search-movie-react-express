@@ -1,13 +1,45 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#Movie Search
 
-## Available Scripts
+##Description
+This project has been created to play around with react/redux make secure API calls and is a good palce to look for a new movies  
 
-In the project directory, you can run:
+## Initial setup
 
-### `npm start`
+- install node v 11.x.x
+- On the project directory run 
+-  `npm install`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+That's it for the client side app! 
+Now we need to get the server starting: 
+- let's go to the server folder `cd server` 
+- and run `npm i`
+
+That's it, we are up and running! 
+
+## To make it work
+
+The project need a private key from https://developers.themoviedb.org/3/getting-started/introduction
+
+Once you obtain your key you have two options: 
+1. You can create a file called `Constants.js` in the server directory and save the key as `THEMOVIEDB_KEY = {your_key}`
+2. or when you run the server you add the variable API_KEY : 
+  `API_KEY={your_key} npm run server`
+
+##Run the Repo
+
+You will need 2 terminal: one to run the little server and one for the client app, 
+
+#### Run the server
+
+Simply run `npm run server`
+The server will run at [http://localhost:4000](http://localhost:4000)
+
+#### Run the App
+
+In another terminal run `npm run start`
+The app will run at [http://localhost:3000](http://localhost:3000)
+
+++++++++++++++++++++++++++++++++++++++++
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
