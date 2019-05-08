@@ -46,7 +46,6 @@ app.get('/getConfig', cors(corsOptions), (req, res) => {
 app.get('/search/:movie', cors(corsOptions), (req, res) => {
   api_helper.make_API_call(CONFIG.base_url + CONFIG.urlOptions.getMovie + CONFIG.API_KEY + '&query=' + req.params.movie)
     .then(response => {
-      console.log(response);
       res.json(response)
     })
     .catch(error => {

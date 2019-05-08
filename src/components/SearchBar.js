@@ -1,36 +1,36 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchMovies, fetchConfig } from '../actions'
-import MovieDBBaseUrl from '../apis/MoviesDatabase'
+import * as searchBarActions from '../actions/SearchBar'
+import MovieDBAPI from '../apis/MoviesDatabase'
+import { bindActionCreators } from 'redux';
 class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputBar: '',
-      config: {}
-    }
-  }
 
   onSubmitForm = (e) => {
     e.preventDefault();
+    MovieDBAPI.get('/search/' + this.props.inputValue)
+      .then(res => {
+        this.props.actions.getMovieList(res.data)
+      })
+  }
+
+  updateInput = (e) => {
+    this.props.actions.updateInput(e.target.value)
   }
 
   componentDidMount() {
-    MovieDBBaseUrl.get('/getConfig')
+    MovieDBAPI.get('/getConfig')
       .then(res => {
-        const config = res.data;
-        this.setState({ config })
+        this.props.actions.getConfig(res.data)
       });
   }
 
   render() {
-    console.log(this.state.config)
     return (
       <div className='search-bar'>
         <form onSubmit={this.onSubmitForm} className='ui form'>
           <label>Search Movie</label>
-          <input type="text" value={this.state.inputBar} placeholder='Search a Movie'
-            onChange={(e) => { this.setState({ inputBar: e.target.value }); console.log('changed') }}
+          <input type="text" value={this.props.inputValue} placeholder='Search a Movie'
+            onChange={this.updateInput}
           />
           <button type='submit'>Search</button>
         </form>
@@ -39,5 +39,18 @@ class SearchBar extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  console.log(state);
 
-export default connect(null, { fetchMovies, fetchConfig })(SearchBar);
+  return {
+    inputValue: state.searchBarComponent.inputValue
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(searchBarActions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
