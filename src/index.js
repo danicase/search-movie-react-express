@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import App from './components/App/App';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import reducers from './reducers';
+import './style.scss'
+
 const store = createStore(reducers);
 
 ReactDOM.render(

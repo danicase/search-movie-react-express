@@ -1,38 +1,42 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import * as searchBarActions from '../actions/SearchBar'
-import MovieDBAPI from '../apis/MoviesDatabase'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+
+import * as searchBarActions from '../../actions/SearchBar';
+import MovieDBAPI from '../../apis/MoviesDatabase';
+import './searchBar.scss'
 class SearchBar extends Component {
 
   onSubmitForm = (e) => {
     e.preventDefault();
     MovieDBAPI.get('/search/' + this.props.inputValue)
       .then(res => {
-        this.props.actions.getMovieList(res.data)
+        this.props.actions.getMovieList(res.data);
       })
   }
 
   updateInput = (e) => {
-    this.props.actions.updateInput(e.target.value)
+    this.props.actions.updateInput(e.target.value);
   }
 
   componentDidMount() {
     MovieDBAPI.get('/getConfig')
       .then(res => {
-        this.props.actions.getConfig(res.data)
+        this.props.actions.getConfig(res.data);
       });
   }
 
   render() {
     return (
       <div className='search-bar'>
-        <form onSubmit={this.onSubmitForm} className='ui form'>
-          <label>Search Movie</label>
-          <input type="text" value={this.props.inputValue} placeholder='Search a Movie'
-            onChange={this.updateInput}
-          />
-          <button type='submit'>Search</button>
+        <form onSubmit={this.onSubmitForm} className='movie-input'>
+          <div className=''>
+            <label htmlFor='searchInput'>Search Movie</label>
+            <input id='searchInput' type="text" value={this.props.inputValue} placeholder='Search a Movie'
+              onChange={this.updateInput}
+            />
+            <button type='submit'>Search</button>
+          </div>
         </form>
       </div>
     )
@@ -41,7 +45,6 @@ class SearchBar extends Component {
 
 const mapStateToProps = (state) => {
   console.log(state);
-
   return {
     inputValue: state.searchBarComponent.inputValue
   }
