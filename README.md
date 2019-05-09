@@ -1,7 +1,7 @@
 #Movie Search
 
 ##Description
-This project has been created to play around with react/redux make secure API calls and is a good palce to look for a new movies  
+This project has been created to play around with react/redux make secure API calls and is a good place to look for a new movies :)
 
 ## Initial setup
 
@@ -18,7 +18,7 @@ That's it, we are up and running!
 
 ## To make it work
 
-The project need a private key from https://developers.themoviedb.org/3/getting-started/introduction
+The project needs a private key from https://developers.themoviedb.org/3/getting-started/introduction
 
 Once you obtain your key you have two options: 
 1. You can create a file called `Constants.js` in the server directory and save the key as `THEMOVIEDB_KEY = {your_key}`
@@ -27,7 +27,7 @@ Once you obtain your key you have two options:
 
 ##Run the Repo
 
-You will need 2 terminal: one to run the little server and one for the client app, 
+You will need 2 terminal: one to run the server and one for the client app, 
 
 #### Run the server
 
@@ -41,60 +41,34 @@ The app will run at [http://localhost:3000](http://localhost:3000)
 
 ++++++++++++++++++++++++++++++++++++++++
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+##Build Plan of the App
 
-### `npm test`
+The app is still on development.
+I follow the building process in phases to that I can keep track at what stage the project currently is and what need to do next: 
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Get Espress.js up and running and create a basic API call to MovieDB **(done)**
+2. Improve the structure of the server and implement the search and getConfig API **(done)**
+3. Create the Client app and make an easy call to our server **(done)**
+4. Create the searchBar component and connect it to the server **(done)**
+5. Add redux and get track of the result of the movies **(done)**
+6. Create the components necessary to display a list of movie **(done)**
+7. Style the search bAr to make more presentable **(done)**
+8. Obtain the poster of the movies and style to make it nice **(done)**
+9. Add React-router for a more detailed page when you click on a movie.
+10. create the api Server-side and Client-side to get the details
+11. Style a but to make it presentable
+10. visualize page index and Implement the next-page button (or see more). 
+11. Spike: can I search movies based on director or cast? 
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##Consideration
+####Server
+- The server is a simple Express.js as light as possible, The only goal of it is is to make API calls to the MovieDB on behalf or my React App for security reasons. 
+- The getConfig API is done only once and the result is stored. This way we avoid to do useless calls and waste resources.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+####Redux
+- This app looks simple enough and could have been easily be done without redux. I decided to use it for me to improve the mechanics and as the project gets bigger will have no problem scaling.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### Actions and Redux
+- I don't use middleware to be able to dispatch function because it adds unnecessary complexity and confusion. As Redux suggests, side effects should be part of the action creation process so I will keep them in the UI component. Maybe in the future we will add a paradigm
+- Actions and reducer are simple enough to manage for now. When the project gets bigger if will become difficult to manage I will consider use a paradigm (reducer composition maybe). 
