@@ -30,12 +30,13 @@ class SearchBar extends Component {
     return (
       <div className='search-bar'>
         <form onSubmit={this.onSubmitForm} className='movie-input'>
-          <div className=''>
-            <label htmlFor='searchInput'>Search Movie</label>
+          <div>
             <input id='searchInput' type="text" value={this.props.inputValue} placeholder='Search a Movie'
               onChange={this.updateInput}
             />
-            <button type='submit'>Search</button>
+          </div>
+          <div>
+            <button className='btn-search' type='submit'>Search</button>
           </div>
         </form>
       </div>
@@ -44,7 +45,6 @@ class SearchBar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     inputValue: state.searchBarComponent.inputValue
   }

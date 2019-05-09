@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { isEmpty } from '../../utils'
 import SingleMovie from '../SingleMovie/SingleMovie.component'
-
+import './movieList.scss'
 class MovieList extends Component {
 
   showMovies = () => {
@@ -16,9 +16,11 @@ class MovieList extends Component {
   }
   render() {
     return (
-      <div>
+      <div className='movie-list'>
         <h1>Search Result</h1>
-        {this.showMovies()}
+        <div className="order-list">
+          {this.showMovies()}
+        </div>
       </div>
     )
   }
