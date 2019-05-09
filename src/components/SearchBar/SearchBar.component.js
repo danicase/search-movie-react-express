@@ -9,7 +9,7 @@ class SearchBar extends Component {
 
   onSubmitForm = (e) => {
     e.preventDefault();
-    MovieDBAPI.get('/search/' + this.props.inputValue)
+    MovieDBAPI.get('/search/' + this.props.inputValue.trim())
       .then(res => {
         this.props.actions.getMovieList(res.data);
       })
@@ -29,15 +29,14 @@ class SearchBar extends Component {
   render() {
     return (
       <div className='search-bar'>
-        <form onSubmit={this.onSubmitForm} className='movie-input'>
-          <div>
-            <input id='searchInput' type="text" value={this.props.inputValue} placeholder='Search a Movie'
-              onChange={this.updateInput}
-            />
-          </div>
-          <div>
-            <button className='btn-search' type='submit'>Search</button>
-          </div>
+        <form onSubmit={this.onSubmitForm} className='movie-search-form'>
+          <input id='searchInput' type="text"
+            className='movie-input'
+            value={this.props.inputValue}
+            placeholder='Search a Movie'
+            onChange={this.updateInput}
+          />
+          <button className='btn-search' type='submit'>Search</button>
         </form>
       </div>
     )
