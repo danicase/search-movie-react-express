@@ -1,6 +1,6 @@
-#Movie Search
+# Movie Search
 
-##Description
+## Description
 This project has been created to play around with react/redux make secure API calls and is a good place to look for a new movies :)
 
 ## Initial setup
@@ -25,7 +25,7 @@ Once you obtain your key you have two options:
 2. or when you run the server you add the variable API_KEY : 
   `API_KEY={your_key} npm run server`
 
-##Run the Repo
+## Run the Repo
 
 You will need 2 terminal: one to run the server and one for the client app, 
 
@@ -41,7 +41,7 @@ The app will run at [http://localhost:3000](http://localhost:3000)
 
 ++++++++++++++++++++++++++++++++++++++++
 
-##Build Plan of the App
+## Build Plan of the App
 
 The app is still on development.
 I follow the building process in phases to that I can keep track at what stage the project currently is and what need to do next: 
@@ -61,12 +61,12 @@ I follow the building process in phases to that I can keep track at what stage t
 11. Spike: can I search movies based on director or cast? 
 
 
-##Consideration
-####Server
+## Consideration
+#### Server
 - The server is a simple Express.js as light as possible, The only goal of it is is to make API calls to the MovieDB on behalf or my React App for security reasons. 
 - The getConfig API is done only once and the result is stored. This way we avoid to do useless calls and waste resources.
 
-####Redux
+#### Redux
 - This app looks simple enough and could have been easily be done without redux. I decided to use it for me to improve the mechanics and as the project gets bigger will have no problem scaling.
 
 #### Actions and Redux
