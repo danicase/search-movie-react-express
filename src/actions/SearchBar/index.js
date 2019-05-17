@@ -3,7 +3,6 @@ export const searchBarTypeActions = {
   GET_MOVIES: 'get Movies',
   GET_CONFIG: 'get config',
   UPDATE_INPUT: 'update search Input'
-
 }
 
 export const getMovieList = (payload = {}) => {

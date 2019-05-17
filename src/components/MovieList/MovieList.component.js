@@ -6,8 +6,9 @@ import './movieList.scss'
 class MovieList extends Component {
 
   showMovies = () => {
-    if (isEmpty(this.props.movieList)) {
-      return null;
+
+    if (this.props.movieList.total_results === 0) {
+      return <h1>No Movie Found</h1>;
     }
     return this.props.movieList.results.map(movie => {
       return (
@@ -15,6 +16,10 @@ class MovieList extends Component {
     })
   }
   render() {
+    if (isEmpty(this.props.movieList)) {
+      return null;
+    }
+
     return (
       <div className='movie-list'>
         <h1>Search Result</h1>
@@ -25,9 +30,11 @@ class MovieList extends Component {
     )
   }
 }
+
 const mapStateToProps = (state) => {
   return {
     movieList: state.searchBarComponent.movieList
   }
 }
+
 export default connect(mapStateToProps)(MovieList);

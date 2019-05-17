@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import './singleMovie.scss'
 class SingleMovie extends Component {
 
@@ -32,6 +33,9 @@ class SingleMovie extends Component {
               {this.props.movie.title}
             </h4>
             {this.showDescription()}
+            <Link to={`/details/ ${this.props.movie.id}`}>
+              <button className='movie-details'>MORE INFO</button>
+            </Link>
           </div>
         </div>
       </div>

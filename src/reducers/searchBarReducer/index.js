@@ -2,13 +2,15 @@ import { searchBarTypeActions } from '../../actions/SearchBar'
 const initialState = {
   movieList: {},
   config: {},
-  inputValue: ''
+  inputValue: '',
 }
+
 const searchBarReducer = (state = initialState, action) => {
+  const { GET_MOVIES, GET_CONFIG, UPDATE_INPUT } = searchBarTypeActions;
   switch (action.type) {
-    case searchBarTypeActions.GET_MOVIES: return Object.assign({}, state, { movieList: action.payload });
-    case searchBarTypeActions.GET_CONFIG: return Object.assign({}, state, { config: action.payload });
-    case searchBarTypeActions.UPDATE_INPUT: return Object.assign({}, state, { inputValue: action.payload });
+    case GET_MOVIES: return { ...state, movieList: action.payload };
+    case GET_CONFIG: return { ...state, config: action.payload };
+    case UPDATE_INPUT: return { ...state, inputValue: action.payload };
     default: return state;
   }
 };

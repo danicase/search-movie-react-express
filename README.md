@@ -72,3 +72,8 @@ I follow the building process in phases to that I can keep track at what stage t
 #### Actions and Redux
 - I don't use middleware to be able to dispatch function because it adds unnecessary complexity and confusion. As Redux suggests, side effects should be part of the action creation process so I will keep them in the UI component. Maybe in the future we will add a paradigm
 - Actions and reducer are simple enough to manage for now. When the project gets bigger if will become difficult to manage I will consider use a paradigm (reducer composition maybe). 
+
+
+#### Possibile future improvement
+
+- add a loading component for when we are waiting the result from the server

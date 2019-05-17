@@ -19,7 +19,8 @@ const CONFIG = {
   base_url: 'https://api.themoviedb.org/3',
   urlOptions: {
     getConfig: '/configuration',
-    getMovie: '/search/movie'
+    getMovie: '/search/movie',
+    getDetails: '/movie/'
   },
   config: null
 };
@@ -52,5 +53,16 @@ app.get('/search/:movie', cors(corsOptions), (req, res) => {
       res.send(error)
     })
 })
+
+app.get('/movie/:movie', cors(corsOptions), (req, res) => {
+  api_helper.make_API_call(CONFIG.base_url + CONFIG.urlOptions.getDetails + req.params.movie + CONFIG.API_KEY)
+    .then(response => {
+      res.json(response)
+    })
+    .catch(error => {
+      res.send(error)
+    })
+})
+
 // Start the Express server
 app.listen(4000, () => console.log('Server running on port 4000!'))  

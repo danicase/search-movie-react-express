@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
 import * as searchBarActions from '../../actions/SearchBar';
 import MovieDBAPI from '../../apis/MoviesDatabase';
+import { withRouter } from 'react-router-dom'
 import './searchBar.scss'
+
 class SearchBar extends Component {
 
   onSubmitForm = (e) => {
     e.preventDefault();
+    this.props.history.push('/');
     MovieDBAPI.get('/search/' + this.props.inputValue.trim())
       .then(res => {
         this.props.actions.getMovieList(res.data);
@@ -55,4 +57,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchBar));
