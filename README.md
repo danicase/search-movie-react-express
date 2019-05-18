@@ -54,11 +54,12 @@ I follow the building process in phases to that I can keep track at what stage t
 6. Create the components necessary to display a list of movie **(done)**
 7. Style the search bAr to make more presentable **(done)**
 8. Obtain the poster of the movies and style to make it nice **(done)**
-9. Add React-router for a more detailed page when you click on a movie.
-10. create the api Server-side and Client-side to get the details
-11. Style a but to make it presentable
-10. visualize page index and Implement the next-page button (or see more). 
-11. Spike: can I search movies based on director or cast? 
+9. Add React-router for a more detailed page when you click on a movie **(done)**
+10. Create the api Server-side and Client-side to get the details **(done)**
+11. Style a bit to make it presentable
+10. Visualize page index and Implement the next-page button (or see more). 
+11. Change Homepage to see popular and top rated movies. (like [here](http://jsfiddle.net/kizu/98cFj/))
+12. Spike: can I search movies based on director or cast? 
 
 
 ## Consideration
@@ -71,9 +72,10 @@ I follow the building process in phases to that I can keep track at what stage t
 
 #### Actions and Redux
 - I don't use middleware to be able to dispatch function because it adds unnecessary complexity and confusion. As Redux suggests, side effects should be part of the action creation process so I will keep them in the UI component. Maybe in the future we will add a paradigm
-- Actions and reducer are simple enough to manage for now. When the project gets bigger if will become difficult to manage I will consider use a paradigm (reducer composition maybe). 
+- Actions and reducer are simple enough to manage for now. When the project gets bigger if will become difficult to manage I will consider use a paradigm (reducer composition maybe).
 
 
 #### Possibile future improvement
 
 - add a loading component for when we are waiting the result from the server
+- add a picture for no image available

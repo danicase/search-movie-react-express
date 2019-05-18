@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as searchBarActions from '../../actions/SearchBar';
-import MovieDBAPI from '../../apis/MoviesDatabase';
+import { getConfig, searchMovies } from '../../apis';
 import { withRouter } from 'react-router-dom'
 import './searchBar.scss'
 
@@ -11,7 +11,7 @@ class SearchBar extends Component {
   onSubmitForm = (e) => {
     e.preventDefault();
     this.props.history.push('/');
-    MovieDBAPI.get('/search/' + this.props.inputValue.trim())
+    searchMovies(this.props.inputValue.trim())
       .then(res => {
         this.props.actions.getMovieList(res.data);
       })
@@ -22,7 +22,7 @@ class SearchBar extends Component {
   }
 
   componentDidMount() {
-    MovieDBAPI.get('/getConfig')
+    getConfig()
       .then(res => {
         this.props.actions.getConfig(res.data);
       });

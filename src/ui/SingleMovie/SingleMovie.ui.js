@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import './singleMovie.scss'
-class SingleMovie extends Component {
+export default class SingleMovie extends Component {
 
   showDescription = () => {
     let text = this.props.movie.overview;
@@ -15,11 +14,12 @@ class SingleMovie extends Component {
 
   showPicture = () => {
     const { base_url, poster_sizes } = this.props.imgConfig;
-    return (<div className='image'>
-      <img src={base_url + poster_sizes[2] + this.props.movie.poster_path}
-        alt={this.props.movie.title}
-      />
-    </div>
+    return (
+      <div className='image'>
+        <img src={base_url + poster_sizes[2] + this.props.movie.poster_path}
+          alt={this.props.movie.title}
+        />
+      </div>
     )
   }
 
@@ -42,11 +42,3 @@ class SingleMovie extends Component {
     )
   }
 }
-
-const MapStateToProps = (state) => {
-  return {
-    imgConfig: state.searchBarComponent.config.images
-  }
-}
-
-export default connect(MapStateToProps)(SingleMovie)

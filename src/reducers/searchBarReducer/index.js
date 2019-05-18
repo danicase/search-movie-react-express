@@ -1,6 +1,6 @@
 import { searchBarTypeActions } from '../../actions/SearchBar'
 const initialState = {
-  movieList: {},
+  movieList: null,
   config: {},
   inputValue: '',
 }

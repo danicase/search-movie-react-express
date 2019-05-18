@@ -1,7 +1,7 @@
 
 import { movieDetailsTypeActions } from '../../actions/MovieDetails'
 const initialState = {
-  movieDetails: {}
+  movieDetails: null
 }
 const movieDetailsReducer = (state = initialState, action) => {
   if (action.type === movieDetailsTypeActions.GET_MOVIEDETAILS) {

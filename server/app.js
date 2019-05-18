@@ -64,5 +64,14 @@ app.get('/movie/:movie', cors(corsOptions), (req, res) => {
     })
 })
 
+app.get('/similarMovie/:movie', cors(corsOptions), (req, res) => {
+  api_helper.make_API_call(CONFIG.base_url + CONFIG.urlOptions.getDetails + req.params.movie + '/similar' + CONFIG.API_KEY)
+    .then(response => {
+      res.json(response)
+    })
+    .catch(error => {
+      res.send(error)
+    })
+})
 // Start the Express server
 app.listen(4000, () => console.log('Server running on port 4000!'))  
